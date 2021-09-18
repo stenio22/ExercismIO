@@ -1,6 +1,6 @@
 package lasagna;
 
-public class Lasanha {
+public class Lasagna {
 
     // TODO: define the 'expectedMinutesInOven()' method
 int expectedMinutesInOven() {
@@ -20,7 +20,7 @@ int totalTimeInMinutes(int camadasLasanha, int mins) {
     return this.preparationTimeInMinutes(camadasLasanha) + mins ;
 }
     public static void main(String[] args) {
-        Lasanha lasagna = new Lasanha();
+        Lasagna lasagna = new Lasagna();
         System.out.println(lasagna.totalTimeInMinutes(3,20));
         
     }

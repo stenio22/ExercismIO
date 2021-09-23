@@ -8,26 +8,25 @@ class BirdWatcher {
 	}
 
 	public static int[] getLastWeek() {
-		int[] listaDaSemana = { 0, 2, 5, 3, 7, 8, 4 };
-		return listaDaSemana;
+		return birdsPerDay;
 	}
 
 	public static int getToday() {
-		BirdWatcher birdCount = new BirdWatcher(birdsPerDay);
-		int ultimoValorDoVetor = birdCount.birdsPerDay[5];
-		return ultimoValorDoVetor;
-	}
+
+        int totalVetor = birdsPerDay.length;
+        if (totalVetor == 0)
+            return 0;
+        return birdsPerDay[totalVetor - 1];
+    }
 	
 	public void incrementTodaysCount() {
-		BirdWatcher birdCount = new BirdWatcher(birdsPerDay);
-		int incrementa = birdCount.getToday() + 1;
+		birdsPerDay[birdsPerDay.length - 1] = getToday() + 1;
 	}
 
 	public static boolean hasDayWithoutBirds() {
-		BirdWatcher birdCount = new BirdWatcher(birdsPerDay);
 		int verificador = 0;
-		for(int i = 0; i < birdCount.birdsPerDay.length; i++) {
-			if(verificador == birdCount.birdsPerDay[i]) {
+		for(int i = 0; i < birdsPerDay.length; i++) {
+			if(verificador == birdsPerDay[i]) {
 				verificador = 100;
 			}
 		}
@@ -35,20 +34,18 @@ class BirdWatcher {
 	}
 
 	public static int getCountForFirstDays(int numberOfDays) {
-		BirdWatcher birdCount = new BirdWatcher(birdsPerDay);
 		int soma = 0;
-		for(int i = 0; i < numberOfDays;i++) {
-			soma = birdCount.birdsPerDay[i] + soma;
+		for(int i = 0; i < Math.min(numberOfDays, birdsPerDay.length);i++) {
+			soma += birdsPerDay[i];
 		}
 		return soma;
 	}
 
 	public static int getBusyDays() {
-		BirdWatcher birdCount = new BirdWatcher(birdsPerDay);
 		int soma = 0;
-		for(int i = 0; i < birdCount.birdsPerDay[i];i++) {
-			if(birdCount.birdsPerDay[i] >= 5) {
-				soma = soma + birdCount.birdsPerDay[i];
+		for(int i = 0; i < birdsPerDay.length;i++) {
+			if(birdsPerDay[i] >= 5) {
+				soma++;
 			}
 		}
 		return soma;
